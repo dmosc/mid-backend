@@ -1,0 +1,20 @@
+# Custom Scalars
+scalar Date
+
+# Directives
+directive @paginate on FIELD_DEFINITION
+
+type Query {
+  # User
+  users(params: QueryParams): Users! @paginate
+  user(id: ID!): User
+
+  # Date
+  serverDate: Date!
+}
+
+type Mutation {
+  # User
+  createUser(user: UserCreate!): User!
+  updateUser(id: ID!, user: UserUpdate!): User
+}
