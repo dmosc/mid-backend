@@ -2,7 +2,6 @@ import DataLoader from 'dataloader';
 import { AuthenticationError, PubSub } from 'apollo-server-express';
 import { verify } from 'jsonwebtoken';
 import { User } from '@db/models';
-import resolveUser from '@graphql/resolvers/user';
 import { secret } from '@config/environment';
 
 const pubsub = new PubSub(); // Only works in dev environment.
@@ -40,7 +39,7 @@ const context = async ({ req = {} }) => {
   const { id } = verify(token, secret);
 
   const loaders = {
-    user: createLoader(User, resolveUser),
+    user: createLoader(User),
   };
 
   return { user: { id }, loaders, pubsub };
