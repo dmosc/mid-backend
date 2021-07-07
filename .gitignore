@@ -119,3 +119,6 @@ dist
 data
 dump
 globalConfig.json
+
+# GCP
+src/config/files/mid-main-96b29b8e8eb0.json

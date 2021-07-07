@@ -1,5 +1,6 @@
 # Custom Scalars
 scalar Date
+scalar Upload
 
 # Directives
 directive @paginate on FIELD_DEFINITION
@@ -8,6 +9,9 @@ type Query {
   # User
   users(params: QueryParams): Users! @paginate
   user(id: ID!): User
+
+  # GCP
+  signFileUrl(filePath: String!): SignedFileUrl!
 
   # Date
   serverDate: Date!

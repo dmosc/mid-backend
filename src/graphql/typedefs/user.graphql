@@ -5,10 +5,23 @@ type User implements Timestamps {
   lastName: String!
   email: String!
   profileImg: String
+  mediator: Mediator
+  representative: Representative
 
   # Interface required
   createdAt: Date!
   updatedAt: Date!
+}
+
+type Mediator {
+  facilitatorId: String!
+  certificateUrl: String!
+  biography: String!
+}
+
+type Representative {
+  role: Role!
+  company: Company!
 }
 
 type Users {
@@ -21,6 +34,7 @@ input UserCreate {
   firstName: String!
   lastName: String!
   email: String!
+  password: String!
   profileImg: String
 }
 
@@ -29,4 +43,22 @@ input UserUpdate {
   lastName: String
   email: String
   profileImg: String
+  mediator: MediatorInput
+  representative: RepresentativeInput
+}
+
+input MediatorInput {
+  facilitatorId: String!
+  certificateUrl: String!
+  biography: String!
+}
+
+input RepresentativeInput {
+  role: Role!
+  company: ID!
+}
+
+# Enums
+enum Role {
+  ADMIN, VIEWER
 }

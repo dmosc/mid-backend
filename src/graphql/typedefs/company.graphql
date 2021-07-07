@@ -1,0 +1,45 @@
+# Types
+type Company implements Timestamps {
+    id: ID!
+    name: String!
+    businessName: String!
+    address: Address!
+
+    # Interface required
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+type Address {
+    country: String!
+    city: String!
+    state: String!
+    street: String!
+    postcode: String!
+}
+
+type Companies {
+    info: Info!
+    results: [Company]!
+}
+
+# Inputs
+input CompanyCreate {
+    name: String!
+    businessName: String!
+    address: AddressInput!
+}
+
+input CompanyUpdate {
+    name: String
+    businessName: String
+    address: AddressInput
+}
+
+input AddressInput {
+    country: String!
+    city: String!
+    state: String!
+    street: String!
+    postcode: String!
+}

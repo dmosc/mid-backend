@@ -1,15 +1,12 @@
 import { User } from '@db/models';
 import { hashSync } from 'bcryptjs';
-import { generate } from 'generate-password';
 import resolveUser from '@graphql/resolvers/user';
 
 const userMutations = {
   createUser: async (_, { user }, { loaders }) => {
-    const password = generate();
-
     const newUser = new User({
       ...user,
-      password: hashSync(password),
+      password: hashSync(user.password),
     });
     const savedUser = await newUser.save();
 

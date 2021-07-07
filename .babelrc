@@ -7,9 +7,10 @@
         "root": ["./src"],
         "alias": {
           "@config": "./src/config",
+          "@connections": "./src/connections",
           "@db": "./src/db",
-          "@tests": "./src/tests",
-          "@graphql": "./src/graphql"
+          "@graphql": "./src/graphql",
+          "@utils": "./src/utils"
         }
       }
     ]

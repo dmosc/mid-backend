@@ -1,4 +1,4 @@
-import { SchemaDirectiveVisitor } from '@graphql-tools/utils';
+import { SchemaDirectiveVisitor } from 'apollo-server-express';
 
 class paginate extends SchemaDirectiveVisitor {
   visitFieldDefinition(field) {
@@ -10,7 +10,7 @@ class paginate extends SchemaDirectiveVisitor {
       const pages = Math.ceil(count / pageSize);
       const prev = page > 1 ? page - 1 : null;
       const next = page < pages ? page + 1 : null;
-      const result = {
+      return {
         info: {
           count,
           pages,
@@ -19,8 +19,6 @@ class paginate extends SchemaDirectiveVisitor {
         },
         results,
       };
-
-      return result;
     };
   }
 }

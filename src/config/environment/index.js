@@ -5,6 +5,12 @@ dotenv.config();
 const port = process.env.API_PORT;
 const secret = process.env.JWT_SECRET;
 
+const gcpConfig = {
+  bucketName: process.env.BUCKET_NAME,
+  credentialsUrl: process.env.CREDENTIALS_URL,
+  projectId: process.env.PROJECT_ID,
+};
+
 const mongo = {
   url: process.env.MONGO_URI,
 };
@@ -15,4 +21,4 @@ const env = {
   production: process.env.NODE_ENV === 'production',
 };
 
-export { port, mongo, secret, env };
+export { port, gcpConfig, mongo, secret, env };

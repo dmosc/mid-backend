@@ -1,25 +1,30 @@
-// Express stuff
 import express from 'express';
 import cookieParser from 'cookie-parser';
-
-// Graphql stuff
-import server from './graphql';
+import http from 'http';
+import { graphqlUploadExpress } from 'graphql-upload';
+import cors from 'cors';
+import apolloServer from './graphql';
+import { auth } from './routes';
 
 const app = express();
 
-// Static
+const corsConfig = {
+  credentials: true,
+  origin: true,
+};
 
 // Middlewares
-app.use(express.json(), cookieParser());
+app.use(express.json(), cors(corsConfig), cookieParser(), graphqlUploadExpress());
 
-server.applyMiddleware({
+apolloServer.applyMiddleware({
   app,
-  cors: {
-    credentials: true,
-    origin: true,
-  },
+  cors: corsConfig,
 });
 
 // Routes
+app.use('/auth', auth);
 
-export default app;
+const httpServer = http.createServer(app);
+apolloServer.installSubscriptionHandlers(httpServer); // Enable subscriptions
+
+export default httpServer;
