@@ -36,6 +36,8 @@ input UserCreate {
   email: String!
   password: String!
   profileImg: String
+  mediator: MediatorInput
+  representative: RepresentativeInput
 }
 
 input UserUpdate {

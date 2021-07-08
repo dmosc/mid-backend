@@ -8,6 +8,7 @@ const userMutations = {
       ...user,
       password: hashSync(user.password),
     });
+
     const savedUser = await newUser.save();
 
     return resolveUser.one(savedUser, loaders);

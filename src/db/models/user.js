@@ -4,7 +4,7 @@ import { roles } from '@utils/constants';
 
 const Phone = new Schema({
   countryCode: { type: String, required: true },
-  number: { type: String, required: true },
+  number: { type: String, required: true }
 });
 
 const User = new Schema(
@@ -16,17 +16,17 @@ const User = new Schema(
     phones: { type: [Phone], default: [], required: true },
     password: { type: String, required: true },
     mediator: {
-      facilitatorId: { type: String, required: true },
-      certificateUrl: { type: String, required: true },
-      biography: { type: String, required: true },
+      facilitatorId: { type: String },
+      certificateUrl: { type: String },
+      biography: { type: String }
     },
     representative: {
-      role: { type: String, enum: [...roles], required: true },
-      company: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
-    },
+      role: { type: String, enum: [...roles] },
+      company: { type: Schema.Types.ObjectId, ref: 'Company' }
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

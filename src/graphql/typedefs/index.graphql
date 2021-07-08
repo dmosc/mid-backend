@@ -6,19 +6,31 @@ scalar Upload
 directive @paginate on FIELD_DEFINITION
 
 type Query {
-  # User
-  users(params: QueryParams): Users! @paginate
-  user(id: ID!): User
+    # User
+    users(
+        mediator: QueryOperators,
+        representative: QueryOperators,
+        params: QueryParams
+    ): Users! @paginate
+    user(id: ID!): User
 
-  # GCP
-  signFileUrl(filePath: String!): SignedFileUrl!
+    # Company
+    companies(params: QueryParams): Companies! @paginate
+    company(id: ID!): Company
 
-  # Date
-  serverDate: Date!
+    # GCP
+    signFileUrl(filePath: String!): SignedFileUrl!
+
+    # Date
+    serverDate: Date!
 }
 
 type Mutation {
-  # User
-  createUser(user: UserCreate!): User!
-  updateUser(id: ID!, user: UserUpdate!): User
+    # User
+    createUser(user: UserCreate!): User!
+    updateUser(id: ID!, user: UserUpdate!): User
+
+    # Company
+    createCompany(company: CompanyCreate!): Company!
+    updateCompany(id: ID!, company: CompanyUpdate!): Company
 }

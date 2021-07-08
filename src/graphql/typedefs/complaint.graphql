@@ -1,0 +1,29 @@
+# Types
+type Complaint implements Timestamps {
+    id: ID!
+    from: String!
+    email: String!
+    message: String!
+
+    # Interface required
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+type Complaints {
+    info: Info!
+    results: [Complaint]!
+}
+
+# Inputs
+input ComplaintCreate {
+    from: String!
+    email: String!
+    message: String!
+}
+
+input ComplaintUpdate {
+    from: String
+    email: String
+    message: String
+}

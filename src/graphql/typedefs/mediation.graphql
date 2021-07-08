@@ -1,0 +1,52 @@
+# Types
+type Mediation implements Timestamps {
+    id: ID!
+    start: Date
+    end: Date
+    description: String
+    zoomUrl: String!
+    inviteesEmails: [String!]!
+    files: [String!]!
+    password: String!
+    state: MediationState!
+    complaint: Complaint
+    mediator: User
+    representatives: [User!]!
+    requestedBy: User!
+
+    # Interface required
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+type Mediations {
+    info: Info!
+    results: [Mediation]!
+}
+
+# Inputs
+input MediationCreate {
+    description: String
+    inviteesEmails: [String!]!
+    representatives: [ID!]!
+    complaint: ID
+}
+
+input MediationUpdate {
+    start: Date
+    end: Date
+    description: String
+    inviteesEmails: [String!]
+    files: [String!]
+    complaint: ID
+    mediator: ID
+    representatives: [ID!]
+}
+
+# Enums
+enum MediationState {
+    INITIATED
+    IN_PROGRESS
+    FINISHED
+    CANCELLED
+}

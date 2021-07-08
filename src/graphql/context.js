@@ -1,7 +1,7 @@
 import DataLoader from 'dataloader';
 import { AuthenticationError, PubSub } from 'apollo-server-express';
 import { verify } from 'jsonwebtoken';
-import { User } from '@db/models';
+import { User, Company } from '@db/models';
 import { secret } from '@config/environment';
 
 const pubsub = new PubSub(); // Only works in dev environment.
@@ -24,7 +24,7 @@ const createLoader = (Model) => {
 
   return {
     one: (id) => loader.load(id.toString()),
-    many: async (ids) => loader.loadMany(ids.map((id) => id.toString())),
+    many: async (ids) => loader.loadMany(ids.map((id) => id.toString()))
   };
 };
 
@@ -40,6 +40,7 @@ const context = async ({ req = {} }) => {
 
   const loaders = {
     user: createLoader(User),
+    company: createLoader(Company)
   };
 
   return { user: { id }, loaders, pubsub };
