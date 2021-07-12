@@ -13,7 +13,7 @@ lerna-debug.log*
 # Jest
 coverage/
 
-# yarn v2
+# Yarn v2
 node_modules/
 .yarn/cache
 .yarn/unplugged
