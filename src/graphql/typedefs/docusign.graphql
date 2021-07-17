@@ -1,0 +1,6 @@
+type DocuSignEnvelopeStatus {
+    envelopeId: String!
+    uri: String!
+    statusDateTime: String!
+    status: String!
+}

@@ -24,6 +24,9 @@ node_modules/
 # GCP
 src/config/files/mid-main-b07764eb2e37.json
 
+# DocuSign
+src/config/files/docusign-private.key
+
 # Husky
 .husky/
 

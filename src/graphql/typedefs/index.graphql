@@ -21,6 +21,12 @@ type Query {
     # GCP
     signFileUrl(filePath: String!): SignedFileUrl!
 
+    # DocuSign
+    docusignCreateOAuth: String
+    docusignGenerateAccessToken: String
+    docusignGetUserInfo(accessToken: String!): String
+    docusignEmitEnvelope: DocuSignEnvelopeStatus
+
     # Date
     serverDate: Date!
 }
